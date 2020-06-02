@@ -39,7 +39,7 @@
 	"rdaddr=0x81000000\0" \
 	"bootpart=0:2\0" \
 	"bootdir=/boot\0" \
-	"bootfile=zImage\0" \
+	"bootfile=uImage\0" \
 	"fdtfile=undefined\0" \
 	"console=ttyO0,115200n8\0" \
 	"partitions=" \
@@ -86,16 +86,16 @@
 	"mmcloados=run mmcargs; " \
 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
 			"if run loadfdt; then " \
-				"bootz ${loadaddr} - ${fdtaddr}; " \
+				"bootm ${loadaddr} - ${fdtaddr}; " \
 			"else " \
 				"if test ${boot_fdt} = try; then " \
-					"bootz; " \
+					"bootm; " \
 				"else " \
 					"echo WARN: Cannot load the DT; " \
 				"fi; " \
 			"fi; " \
 		"else " \
-			"bootz; " \
+			"bootm; " \
 		"fi;\0" \
 	"mmcboot=mmc dev ${mmcdev}; " \
 		"if mmc rescan; then " \
@@ -118,7 +118,7 @@
 		"tftp ${loadaddr} ${bootfile}; " \
 		"tftp ${fdtaddr} ${fdtfile}; " \
 		"run netargs; " \
-		"bootz ${loadaddr} - ${fdtaddr}\0" \
+		"bootm ${loadaddr} - ${fdtaddr}\0" \
 	"findfdt=setenv fdtfile var-som-am33.dtb\0" \
 	BOOTCMD_COMMON \
 	BOOTCMD_NAND \
