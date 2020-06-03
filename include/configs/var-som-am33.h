@@ -122,6 +122,11 @@
 	"findfdt=setenv fdtfile var-som-am33.dtb\0" \
 	BOOTCMD_COMMON \
 	BOOTCMD_NAND \
+	"nandboot=echo Booting from nand ...; " \
+		"run nandargs; " \
+		"nand read ${fdtaddr} NAND.u-boot-spl-os; " \
+		"nand read ${loadaddr} NAND.kernel; " \
+		"bootm ${loadaddr} - ${fdtaddr}\0" \
 	BOOTCMD_MMC \
 	BOOTCMD_USB
 #endif
