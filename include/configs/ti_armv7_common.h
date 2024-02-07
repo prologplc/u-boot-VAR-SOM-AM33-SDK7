@@ -240,6 +240,7 @@
 
 /* Boot defines */
 #define BOOTCMD_COMMON \
+	"pmic_init=i2c dev 1 ; i2c mw 0x2d 0x3f 0x14\0" \
 	"rootpart=2\0" \
 	"script_boot=" \
 		"if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then " \
@@ -311,6 +312,6 @@
 	"bootcmd_nand=run nandboot;\0"
 
 #define CONFIG_BOOTCOMMAND \
-	"for target in ${boot_targets}; do run bootcmd_${target}; done"
+	"run pmic_init; for target in ${boot_targets}; do run bootcmd_${target}; done"
 
 #endif	/* __CONFIG_TI_ARMV7_COMMON_H__ */
