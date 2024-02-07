@@ -1,3 +1,29 @@
+$ mkdir ~/varsomam33
+
+$ cd ~/varsomam33
+
+$ git clone git://github.com/varigit/u-boot-VAR-SOM-AM33-SDK7.git
+
+Setup Toolchain path
+
+$ export PATH=/opt/gcc-linaro-5.3.1-2016.05-x86_64_arm-linux-gnueabihf/bin:$PATH
+
+Building U-boot
+U-boot variant to boot from NAND flash:
+
+$ cd u-boot-VAR-SOM-AM33-SDK7
+
+$ git checkout krogoth
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- var-som-am33
+
+U-boot variant to boot from SD-Card:
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- var-som-am33-sd
+
+U-Boot Environment Settings
+The VAR-SOM-AM33 U-Boot has default environment settings that boot from NAND, SD/MMC card and Ethernet.
+
 #
 # (C) Copyright 2000 - 2013
 # Wolfgang Denk, DENX Software Engineering, wd@denx.de.
