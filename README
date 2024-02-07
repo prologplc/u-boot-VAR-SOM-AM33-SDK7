@@ -1,14 +1,5 @@
-$ mkdir ~/varsomam33
-
-$ cd ~/varsomam33
-
-$ git clone git://github.com/varigit/u-boot-VAR-SOM-AM33-SDK7.git
-
-Setup Toolchain path
-
-$ export PATH=/opt/gcc-linaro-5.3.1-2016.05-x86_64_arm-linux-gnueabihf/bin:$PATH
-
 Building U-boot
+===============
 U-boot variant to boot from NAND flash:
 
 $ cd u-boot-VAR-SOM-AM33-SDK7
